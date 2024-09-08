@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="modal-overlay" id="modal-overlay" style="display:none;"></div>
+    <dialog id="newBook">
+        <form>
+            <button type="close-button" id="closeButton">x</button>
+            <label for="title">Add a new book</label>
+            <input type="text" id="newTitle" name="title" placeholder="Title">
+            <input type="text" id="newAuthor" name="author" placeholder="Author">
+            <input type="text" id="newPages" name="pages" placeholder="Pages">
+            <span>
+                <label for="newRead">Have you read the book?</label>
+                <input type="checkbox" id="newRead" name="read">
+            </span>
+            <button type="submit" id="submitBook">Submit</button>
+        </form>
+    </dialog>
+    <div class="container">
+        <header>
+            <p class="title">Library</p>
+        </header>
+        <main>
+            <button class="addBook">+ Add book</button>
+            <div class="card-container">
+                
+            </div>
+        </main>
+        <footer>
+            <p>Copyright © 2024 jackiewaang</p>
+        </footer>
+    </div>
+</body>
+</html>
