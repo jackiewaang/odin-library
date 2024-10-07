@@ -13,13 +13,14 @@
         <form>
             <button type="close-button" id="closeButton">x</button>
             <label for="title">Add a new book</label>
-            <input type="text" id="newTitle" name="title" placeholder="Title">
-            <input type="text" id="newAuthor" name="author" placeholder="Author">
-            <input type="text" id="newPages" name="pages" placeholder="Pages">
+            <input type="text" id="newTitle" name="title" placeholder="Title" required oninvalid="this.setCustomValidity('Enter the title of the book.')">
+            <input type="text" id="newAuthor" name="author" placeholder="Author" required oninvalid="this.setCustomValidity('Enter the author of the book.')">
+            <input type="number" id="newPages" name="pages" placeholder="Pages" min="1" required oninvalid="this.setCustomValidity('Enter the number of pages in the book.')">
             <span>
                 <label for="newRead">Have you read the book?</label>
                 <input type="checkbox" id="newRead" name="read">
             </span>
+            <div id="errorMessage"></div>
             <button type="submit" id="submitBook">Submit</button>
         </form>
     </dialog>

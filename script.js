@@ -69,16 +69,33 @@ addButton.addEventListener("click", () => {
 
 
 const submitBook = document.querySelector("#submitBook");
-submitBook.addEventListener("click", function(){
+submitBook.addEventListener("click", function(event){
     event.preventDefault();
-    let newTitle = document.querySelector("#newTitle").value;
-    let newAuthor = document.querySelector("#newAuthor").value;
-    let newPages = document.querySelector("#newPages").value;
-    let isRead = (document.querySelector("#newRead").checked) ? true : false;
-    const newBook = new Book(newTitle, newAuthor, newPages, isRead);
-    addBookToLibrary(newBook);
-    dialog.close();
-    document.getElementById('modal-overlay').style.display = 'none';
-    document.querySelector('form').reset();
+
+    const newTitle = document.querySelector("#newTitle");
+    const newAuthor = document.querySelector("#newAuthor");
+    const newPages = document.querySelector("#newPages");
+    const isRead = (document.querySelector("#newRead").checked) ? true : false;
+    const errors = [newTitle.validationMessage, newAuthor.validationMessage, newPages.validationMessage];
+    const condition = newTitle.checkValidity() && newAuthor.checkValidity() && newPages.checkValidity();
+
+    if(condition){
+        const newBook = new Book(newTitle.value, newAuthor.value, newPages.value, isRead.value);
+        addBookToLibrary(newBook);
+        dialog.close();
+        document.getElementById('modal-overlay').style.display = 'none';
+        document.querySelector('form').reset();
+    } else{
+        const errorBox = document.querySelector('#errorMessage');
+        let error = newTitle.validationMessage;
+        if(newTitle.validationMessage !== ''){
+            error = newTitle.validationMessage;
+        } else if(newAuthor.validationMessage !== ''){
+            error = newAuthor.validationMessage;
+        } else{
+            error = newPages.validationMessage;
+        }
+        errorBox.textContent = error;
+    }
     displayBooks();
 })

@@ -159,6 +159,15 @@ span{
     background-color:#f87171;
 }
 
+input:invalid{
+    border:2px #f87171 solid;
+}
+
+#errorMessage{
+    color:red;
+    font-size:1rem;
+}
+
 footer{
     grid-row:3;
     background-color: #e5e7eb;
